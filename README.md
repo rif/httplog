@@ -7,8 +7,10 @@ go get -u github.com/rif/httplog
 
 ### Usage
 
+Type httplog -help for all options
+
 ```
-$ httplog 8000 // default port is 8080
+$ httplog -port 8000 -format// default port is 8080
 
 $ curl --data "test=1"  http://localhost:8000/mama
 ```
