@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"os"
 )
 
 func main() {
@@ -12,6 +13,10 @@ func main() {
 		b, _ := json.MarshalIndent(r, "", " ")
 		log.Print(string(b))
 	})
-
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	port := "8080"
+	if len(os.Args) > 1 {
+		port = os.Args[1]
+	}
+	log.Printf("Listening on 0.0.0.0:%s...", port)
+	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
